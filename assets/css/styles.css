@@ -36,6 +36,7 @@ body.dark-theme {
   color: #fff;
   font-size: 1.2em;
   transition: background 0.3s;
+  justify-content: right;
 }
 
 body.dark-theme .theme-btn {
@@ -71,11 +72,13 @@ body.dark-theme .theme-btn {
   font-weight: bold;
   display: flex;
   gap: 35px;
+  padding-right: 10%;
 }
 
 .nav-links li a {
   color: var(--text-color);
   text-decoration: none;
+  z-index: 25;
 }
 .nav-links li a:hover {
     background: #949494;
@@ -91,6 +94,7 @@ body.dark-theme .theme-btn {
   display: none;
   color: #fff;
   cursor: pointer;
+  padding-left: 40%;
 }
 .sec-container{
   min-height: 85vh;
@@ -162,7 +166,7 @@ body.dark-theme .theme-btn {
 }
 
 .dest-card:hover {
-  transform: rotate(1deg) scale(1.05);
+  transform: rotate(30deg) scale(2.05);
   box-shadow: 0 8px 18px rgba(0,0,0,0.2);
 }
 
