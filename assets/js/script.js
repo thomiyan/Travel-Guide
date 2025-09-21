@@ -66,6 +66,13 @@ function openModal(id) {
     index = (index + 1) % slides.length;
     slides[index].classList.add("active");
   }, 3000);
+
+  // Close if clicking outside modal card
+  modal.addEventListener("click", function(e) {
+    if (e.target === modal) {
+      closeModal(id);
+    }
+  });
 }
 
 function closeModal(id) {

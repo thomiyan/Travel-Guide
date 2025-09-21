@@ -251,7 +251,7 @@ body.dark-theme .theme-btn {
   border-radius: 50%;
   padding: 4px 10px;
   cursor: pointer;
-  z-index: 10;   
+  z-index: 20;   
   transition: background 0.3s, color 0.3s;
 }
 
