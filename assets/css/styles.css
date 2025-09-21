@@ -98,23 +98,38 @@ body.dark-theme .theme-btn {
 
 .hero {
   position: relative;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;  
+  align-items: center;
   color: #fff;
-  min-height: 85vh;
+  min-height: 85vh; 
+  overflow: hidden;
 }
 
 .hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 90vh;
+  height: 100%;
   object-fit: cover;
-  filter: brightness(70%);
+  z-index: -1;
+  filter: brightness(0.6);
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 1.5s ease-out, transform 3s ease-out;
+}
+
+.hero-img.show {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .hero-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  color: #fff;
+  max-width: 700px;
+  padding: 20px;
 }
 
 .btn {
@@ -139,12 +154,122 @@ body.dark-theme .theme-btn {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  max-width: 310px;
+  max-height: 260px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.dest-card:hover {
+  transform: rotate(1deg) scale(1.05);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
 }
 
 .dest-card img {
   width: 100%;
   height: 150px;
   object-fit: cover;
+}
+.dest-card h3, 
+.dest-card p {
+  margin: 15px;
+}
+.dest-card p {
+  font-size: 1em;
+  color: #666;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Card */
+.modal-card {
+  background: #fff;
+  width: 60%;
+  max-width: 900px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  animation: fadeInUp 0.6s ease;
+}
+
+/* Modal Image Slideshow */
+.modal-images {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.modal-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+.modal-images img.active {
+  display: block;
+}
+
+/* Modal Content */
+.modal-content {
+  padding: 20px;
+  color: #333;
+}
+
+.modal-content h2 {
+  margin-bottom: 10px;
+  color: #009688;
+}
+
+.modal-content p {
+  margin: 6px 0;
+}
+
+/* Close Button */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 24px;
+  color: #000000;
+  background: rgba(0,0,0,0.5);
+  border-radius: 50%;
+  padding: 4px 10px;
+  cursor: pointer;
+  z-index: 10;   
+  transition: background 0.3s, color 0.3s;
+}
+
+.modal-close:hover {
+  background: rgba(0,0,0,0.8);
+  color: #009688;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .accordion-btn {

@@ -29,37 +29,64 @@
     <input type="text" id="searchInput" placeholder="Search destinations...">
 
     <div class="sec-container dest-grid" id="destGrid">
-        <div class="dest-card">
+        <!-- Destination Card -->
+        <div class="dest-card slide-in-left" onclick="openModal('sibebe')">
             <img src="assets/img/sibebe-resort2.jpg" alt="SibebeResort">
             <h3>Sibebe Resort</h3>
             <p>The city of lights and romance.</p>
         </div>
-        <div class="dest-card">
+        <!-- Modal (hidden by default) -->
+        <div id="modal-sibebe" class="modal-overlay">
+        <div class="modal-card">
+            <span class="modal-close" onclick="closeModal('sibebe')">&times;</span>
+            
+            <!-- Image Slideshow -->
+            <div class="modal-images">
+            <img src="assets/img/sibebe-resort1.jpg" class="active" alt="Sibebe Resort 1">
+            <img src="assets/img/sibebe-resort2.jpg" alt="Sibebe Resort 2">
+            <img src="assets/img/sibebe-resort3.jpg" alt="Sibebe Resort 3">
+            </div>
+            
+            <!-- Info -->
+            <div class="modal-content">
+            <h2>Sibebe Resort</h2>
+            <p><strong>Intro:</strong> A scenic resort known for relaxation and hiking trails at the base of Sibebe Rock.</p>
+            <p><strong>Location:</strong> Mbuluzi, near Mbabane, Eswatini</p>
+            <p><strong>Entrance Fee:</strong> E50 per adult</p>
+            <p><strong>Operating Hours:</strong> 8:00 AM – 6:00 PM</p>
+            <p><strong>Services:</strong> Lodging, Dining, Guided Tours</p>
+            <p><strong>Activities:</strong> Hiking, Swimming, Nature Walks, Picnics</p>
+            <p><strong>Other Info:</strong> Family friendly, popular for weekend getaways.</p>
+            </div>
+        </div>
+        </div>
+
+        <div class="dest-card fade-in">
             <img src="assets/img/simunye.jpg" alt="Malolotja">
             <h3>Malolotja Nature Reserve</h3>
             <p>The city of lights and romance.</p>
         </div>
-        <div class="dest-card">
+        <div class="dest-card slide-in-right">
             <img src="assets/img/Mantenga-Reserve-SWZ-5-RT.jpg" alt="Mantenga">
             <h3>Mantenga Falls</h3>
             <p>The city of lights and romance.</p>
         </div>
-        <div class="dest-card">
+        <div class="dest-card slide-in-left">
             <img src="assets/img/Mantenga10.jpg" alt="Mhlume">
             <h3>Mhlume Country Club</h3>
             <p>The city of lights and romance.</p>
         </div>
-        <div class="dest-card">
+        <div class="dest-card fade-in">
             <img src="assets/img/simunye-country-club.jpg" alt="Simunye">
             <h3>Simunye Country Club</h3>
             <p>The city of lights and romance.</p>
         </div>
-        <div class="dest-card">
+        <div class="dest-card slide-in-right">
             <img src="assets/img/sibebe-resort23.jpg" alt="Magadzavane">
             <h3>Magadzavane Lodge</h3>
             <p>A blend of tradition and modernity.</p>
         </div>
-        <div class="dest-card">
+        <div class="dest-card slide-in-left">
             <img src="assets/img/2mantengalod-.jpg" alt="Cape Town">
             <h3>Cape Town</h3>
             <p>Nature, beaches, and culture await.</p>

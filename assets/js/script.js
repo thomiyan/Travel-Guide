@@ -49,6 +49,33 @@ if (searchInput) {
     });
   });
 
+// --- Destination Modal ---
+let slideInterval;
+
+function openModal(id) {
+  const modal = document.getElementById(`modal-${id}`);
+  modal.style.display = "flex";
+
+  // Start slideshow
+  const slides = modal.querySelectorAll(".modal-images img");
+  let index = 0;
+  slides.forEach((img, i) => img.classList.toggle("active", i === 0));
+
+  slideInterval = setInterval(() => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+  }, 3000);
+}
+
+function closeModal(id) {
+  const modal = document.getElementById(`modal-${id}`);
+  modal.style.display = "none";
+
+  // Stop slideshow
+  clearInterval(slideInterval);
+}
+
 
 
 // Leaflet Map (Destinations page)
@@ -133,3 +160,27 @@ const observer = new IntersectionObserver((entries, observer) => {
 }, { threshold: 0.2 });
 
 animatedElements.forEach(el => observer.observe(el));
+
+// slide-in-left on scroll
+// --- Hero text: slide in left on page load ---
+window.addEventListener('load', () => {
+  const heroText = document.querySelector('.hero-text.slide-in-left');
+  if (heroText) {
+    setTimeout(() => heroText.classList.add('show'), 300);
+  }
+});
+
+
+// --- Hero animations on page load ---
+window.addEventListener('load', () => {
+  const heroText = document.querySelector('.hero-text.fade-in');
+  const heroImg = document.querySelector('.hero-img');
+
+  if (heroText) {
+    setTimeout(() => heroText.classList.add('show'), 500);
+  }
+
+  if (heroImg) {
+    setTimeout(() => heroImg.classList.add('show'), 100);
+  }
+});
