@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reviews</title>
-  <link rel="stylesheet" href="/assets/css/styles.css">
+  <title>Reviews - Travel Guide</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+  <!-- Navbar -->
   <header>
-    <nav class="navbar">
+     <nav class="navbar">
       <div class="logo">🌍 Travel Guide</div>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
@@ -19,34 +20,114 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <button id="themeToggle" class="theme-btn">🌙</button>
-      <div class="menu-toggle" id="menuToggle">☰</div>
     </nav>
   </header>
-
   <main>
-    <h1>User Reviews</h1>
-    <div class="carousel-container">
-      <button class="carousel-btn prev">❮</button>
-      <div class="sec-container carousel" id="carousel">
-        <div class="review">"Malolotja was way fantastic, the zip-lining was greate! Highly recommend." – Pearl ⭐⭐⭐⭐⭐</div>
-        <div class="review">"No great place for soul refreshing like Simunye Country Club, great customer services! Highly recommend." – Marry ⭐⭐⭐⭐⭐</div>
-        <div class="review">"If you want reath taking moments of your life, and enjoy yourself; visit Mantenga falls and you won't regret it! Highly recommend." – Aaron ⭐⭐⭐⭐⭐</div>
-        <div class="review">"Out of words, when i think of the magical moments i had at Malolotja! Highly recommend." – Anastacia ⭐⭐⭐⭐⭐</div>
-        <div class="review">"Paris was magical! Highly recommend." – Anna ⭐⭐⭐⭐⭐</div>
-        <div class="review">"Tokyo’s food scene is unmatched!" – Agatha ⭐⭐⭐⭐</div>
-        <div class="review">"Cape Town beaches were stunning." – Sarah ⭐⭐⭐⭐⭐</div>
+    <!-- Welcome Section -->
+    <section class="reviews-intro fade-in">
+      <h2>What Our Visitors Say 🌍</h2>
+      <p>Here’s what some of our visitors say about our site and the amazing places they’ve explored.  
+      Feel free to leave yours using the form below 👇</p>
+    </section>
+
+    <!-- Reviews Carousel -->
+    <section class="reviews-carousel fade-in">
+      <div class="carousel-container" id="reviewCarousel">
+        <div class="review-card .revietext">
+          <p>"The Sibebe Resort was breathtaking! The trails and views were worth every step."</p>
+          <h4>🌄 Sibebe Resort</h4>
+          <div class="review-footer">
+            <span>- Nomcebo Dlamini</span>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+        <div class="review-card">
+          <p>"I loved Mantenga Cultural Village! A great way to experience Eswatini culture."</p>
+          <h4>🏛️ Mantenga Cultural Village</h4>
+          <div class="review-footer">
+            <span>- Sipho Mabuza</span>
+            <div class="stars">⭐⭐⭐⭐</div>
+          </div>
+        </div>
+        <div class="review-card">
+          <p>"Mlilwane Wildlife Sanctuary was perfect for a family trip. Peaceful and adventurous!"</p>
+          <h4>🦓 Mlilwane Wildlife Sanctuary</h4>
+          <div class="review-footer">
+            <span>- Thandeka Shongwe</span>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+        <div class="review-card">
+          <p>"Mlilwane Wildlife Sanctuary was perfect for a family trip. Peaceful and adventurous!"</p>
+          <h4>🦓 Mlilwane Wildlife Sanctuary</h4>
+          <div class="review-footer">
+            <span>- Thandeka Shongwe</span>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+        <div class="review-card">
+          <p>"Mlilwane Wildlife Sanctuary was perfect for a family trip. Peaceful and adventurous!"</p>
+          <h4>🦓 Mlilwane Wildlife Sanctuary</h4>
+          <div class="review-footer">
+            <span>- Thandeka Shongwe</span>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+        <div class="review-card">
+          <p>"Mlilwane Wildlife Sanctuary was perfect for a family trip. Peaceful and adventurous!"</p>
+          <h4>🦓 Mlilwane Wildlife Sanctuary</h4>
+          <div class="review-footer">
+            <span>- Thandeka Shongwe</span>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+        <div class="review-card">
+          <p>"Mlilwane Wildlife Sanctuary was perfect for a family trip. Peaceful and adventurous!"</p>
+          <h4>🦓 Mlilwane Wildlife Sanctuary</h4>
+          <div class="review-footer">
+            <span>- Thandeka Shongwe</span>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+        <div class="review-card">
+          <p>"Mlilwane Wildlife Sanctuary was perfect for a family trip. Peaceful and adventurous!"</p>
+          <h4>🦓 Mlilwane Wildlife Sanctuary</h4>
+          <div class="review-footer">
+            <span>- Thandeka Shongwe</span>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
       </div>
-      <button class="carousel-btn next">❯</button>
-    </div>
+    </section>
 
-    <form id="reviewForm">
-      <h2>Add Your Review</h2>
-      <input type="text" id="name" placeholder="Your name" required>
-      <textarea id="message" placeholder="Your review" required></textarea>
-      <button type="submit" class="btn">Submit</button>
-    </form>
+    <!-- Review Form -->
+    <section class="review-form-section fade-in">
+      <h3>Leave a Review ✍️</h3>
+      <form id="reviewForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <select id="location" required>
+          <option value="" disabled selected>Select Location</option>
+          <option value="Sibebe Resort">Sibebe Resort</option>
+          <option value="Mantenga Cultural Village">Mantenga Cultural Village</option>
+          <option value="Mlilwane Wildlife Sanctuary">Mlilwane Wildlife Sanctuary</option>
+          <option value="Other">Other</option>
+        </select>
+        <textarea id="message" rows="4" placeholder="Write your review..." required></textarea>
+        <label for="rating">Rating:</label>
+        <select id="rating" required>
+          <option value="5">⭐⭐⭐⭐⭐</option>
+          <option value="4">⭐⭐⭐⭐</option>
+          <option value="3">⭐⭐⭐</option>
+          <option value="2">⭐⭐</option>
+          <option value="1">⭐</option>
+        </select>
+        <button type="submit" class="btn">Submit Review</button>
+      </form>
+      
+      <!-- Hidden Clear Button -->
+      <button id="clearReviews" class="btn danger-btn hidden">Clear All Reviews</button>
+    </section>
   </main>
-
   <footer>
     <p>© 2025 Travel Guide</p>
   </footer>

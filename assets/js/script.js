@@ -1,31 +1,28 @@
 // Mobile Menu Toggle
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
-
 if (menuToggle) {
   menuToggle.addEventListener("click", () => {
     navLinks.style.display = navLinks.style.display === "flex" ? "none" : "flex";
   });
 }
 
-// Accordion
-const accordions = document.querySelectorAll(".accordion-btn");
-accordions.forEach(btn => {
-  btn.addEventListener("click", () => {
-    btn.nextElementSibling.style.display =
-      btn.nextElementSibling.style.display === "block" ? "none" : "block";
+// Accordion Functionality for Tips Page
+const accordions = document.querySelectorAll('.accordion-header');
+accordions.forEach(header => {
+  header.addEventListener('click', () => {
+    const item = header.parentElement;
+    item.classList.toggle('active');
+
+    const content = header.nextElementSibling;
+    if (item.classList.contains('active')) {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } else {
+      content.style.maxHeight = null;
+    }
   });
 });
 
-// Review Form
-const reviewForm = document.getElementById("reviewForm");
-if (reviewForm) {
-  reviewForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    alert("Thank you for your review!");
-    reviewForm.reset();
-  });
-}
 
 // Contact Form
 const contactForm = document.getElementById("contactForm");
@@ -48,7 +45,7 @@ if (searchInput) {
       card.style.display = title.includes(filter) ? "block" : "none";
     });
   });
-
+}
 // --- Destination Modal ---
 let slideInterval;
 
@@ -74,7 +71,6 @@ function openModal(id) {
     }
   });
 }
-
 function closeModal(id) {
   const modal = document.getElementById(`modal-${id}`);
   modal.style.display = "none";
@@ -105,34 +101,6 @@ if (mapEl) {
       .addTo(map)
       .bindPopup(`<b>${dest.name}</b><br>${dest.desc}`);
   });
-}
-
-// Carousel (Reviews page)
-const carousel = document.getElementById("carousel");
-if (carousel) {
-  const reviews = carousel.querySelectorAll(".review");
-  let currentIndex = 0;
-
-  function showSlide(index) {
-    carousel.style.transform = `translateX(-${index * 100}%)`;
-  }
-
-  document.querySelector(".carousel-btn.next").addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % reviews.length;
-    showSlide(currentIndex);
-  });
-
-  document.querySelector(".carousel-btn.prev").addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
-    showSlide(currentIndex);
-  });
-
-  // Auto-slide every 5s
-  setInterval(() => {
-    currentIndex = (currentIndex + 1) % reviews.length;
-    showSlide(currentIndex);
-  }, 5000);
-}
 }
 
 
@@ -189,5 +157,123 @@ window.addEventListener('load', () => {
 
   if (heroImg) {
     setTimeout(() => heroImg.classList.add('show'), 100);
+  }
+});
+
+
+
+
+
+// =================== Carousel Auto Slide ===================
+const carousel = document.querySelector('.carousel-container');
+let scrollAmount = 0;
+
+setInterval(() => {
+  if (carousel) {
+    scrollAmount += 320; // card width + gap
+    if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth) {
+      scrollAmount = 0; // reset
+    }
+    carousel.scrollTo({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+}, 4000);
+
+// =================== Handle Reviews with localStorage ===================
+const reviewForm = document.getElementById('reviewForm');
+const reviewCarousel = document.getElementById('reviewCarousel');
+
+// Load saved reviews on page load
+function loadReviews() {
+  const savedReviews = JSON.parse(localStorage.getItem('reviews')) || [];
+  savedReviews.forEach(r => {
+    createReviewCard(r.name, r.location, r.message, r.rating, false);
+  });
+}
+
+// Create review card (helper function)
+function createReviewCard(name, location, message, rating, highlight = true) {
+  
+  // Convert numeric rating → stars
+  const stars = '⭐'.repeat(parseInt(rating));
+
+  const newCard = document.createElement('div');
+  newCard.classList.add('review-card');
+  if (highlight) newCard.classList.add('new'); // highlight only new ones
+  newCard.innerHTML = `
+    <p>"${message}"</p>
+    <h4>${location}</h4>
+    <div class="review-footer">
+      <span>- ${name}</span>
+      <div class="stars">${stars}</div>
+    </div>
+  `;
+
+  // Add to the start of the carousel
+  reviewCarousel.prepend(newCard);
+}
+
+// Handle review submission
+if (reviewForm && reviewCarousel) {
+  reviewForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const location = document.getElementById('location').value;
+    const message = document.getElementById('message').value;
+    const rating = document.getElementById('rating').value;
+
+    alert(`Thank you ${name}! Your review for ${location} has been submitted with ${rating} stars.`);
+
+    // Create and display new card
+    createReviewCard(name, location, message, rating, true);
+
+    // Save to localStorage
+    const savedReviews = JSON.parse(localStorage.getItem('reviews')) || [];
+    savedReviews.unshift({ name, location, message, rating });
+    localStorage.setItem('reviews', JSON.stringify(savedReviews));
+
+    // Reset form
+    reviewForm.reset();
+
+    // Scroll to show new card
+    carousel.scrollTo({ left: 0, behavior: 'smooth' });
+  });
+}
+
+// Load reviews when page loads
+window.addEventListener('DOMContentLoaded', loadReviews);
+
+
+
+
+
+
+
+// =================== Clear All Reviews (Admin) ===================
+const clearBtn = document.getElementById('clearReviews');
+const ADMIN_PASS = "opendev2025"; // change this password to your own secret
+
+if (clearBtn) {
+  clearBtn.addEventListener('click', () => {
+    const inputPass = prompt("🔑 Enter admin password to clear reviews:");
+    if (inputPass === ADMIN_PASS) {
+      if (confirm("⚠️ Are you sure you want to clear ALL reviews?")) {
+        localStorage.removeItem('reviews');
+        reviewCarousel.innerHTML = ""; // remove all cards
+        alert("✅ All reviews cleared successfully!");
+      }
+    } else if (inputPass !== null) {
+      alert("❌ Incorrect password. Access denied.");
+    }
+  });
+}
+
+// Reveal admin button with Ctrl+Shift+C
+window.addEventListener('keydown', (e) => {
+  if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'c') {
+    clearBtn.classList.toggle('hidden');
   }
 });
