@@ -24,7 +24,6 @@ body.dark-theme {
   --footer-bg: #004d40;
 }
 .theme-btn {
-  margin-left: 15px;
   background: none;
   border: 2px solid #fff;
   border-radius: 50%;
@@ -33,7 +32,38 @@ body.dark-theme {
   color: #fff;
   font-size: 1.2em;
   transition: background 0.3s;
-  justify-content: right;
+  margin-left: auto;
+  position: relative;
+  width: 52px;
+  height: 28px;
+  background: #ddd;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+}
+
+.theme-btn .toggle-slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: left 0.3s, background 0.3s;
+}
+body.dark-theme .theme-btn {
+  background: #333;
+}
+body.dark-theme .theme-btn .toggle-slider {
+  left: 26px;
+  background: #222;
 }
 body.dark-theme .theme-btn {
   border: 2px solid #f1f1f1;
@@ -44,22 +74,23 @@ body.dark-theme .review-card,
 }
 
 .home-nav {
-  display: flex;
-  justify-content:left;
-  align-items: center;
-  background: rgba(17, 107, 107, 0.726);
-  padding: 10px 10%;
+  position: fixed;
+  width: 85vw;
+  z-index: 100;
+  background: transparent;
+  padding-top: 25px;
+  transition: background 0.3s;
 }
 .navbar {
   display: flex;
-  justify-content:left;
+  justify-content: left;
   align-items: center;
   background: var(--nav-bg);
   padding: 10px 10%;
 }
 .navbar .logo, 
 .home-nav .logo {
-  color: var(--text-color);
+  color: var( --bg-color);
   font-size: 1.2em;
   font-weight: bold;
   padding-right: 20%;
@@ -69,7 +100,6 @@ body.dark-theme .review-card,
   font-weight: bold;
   display: flex;
   gap: 35px;
-  padding-right: 10%;
 }
 .nav-links li a {
   color: var(--text-color);
@@ -90,7 +120,12 @@ body.dark-theme .review-card,
   display: none;
   color: #fff;
   cursor: pointer;
-  padding-left: 40%;
+  font-size: 1em;
+  padding: 8px 8px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 8px;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 .sec-container{
   min-height: 85vh;
@@ -100,24 +135,15 @@ body.dark-theme .review-card,
   position: relative;
   display: flex;
   justify-content: center;
-  text-align: center;  
+  text-align: center;
   align-items: center;
   color: #fff;
-  min-height: 85vh; 
+  min-height: 100vh;
   overflow: hidden;
+  background: url('../img/mantenga4.jpg') center center/cover no-repeat;
 }
 .hero-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-  filter: brightness(0.6);
-  opacity: 0;
-  transform: scale(1.1);
-  transition: opacity 1.5s ease-out, transform 3s ease-out;
+  display: none;
 }
 .hero-img.show {
   opacity: 1;
@@ -521,17 +547,45 @@ footer {
 
 @media (max-width: 768px) {
   .menu-toggle {
-    display: block;
+  display: block;
+  z-index: 5000;
+  color: #fff;
+  font-size: 1em;
+  padding: 10px 10px;
+  margin-left: auto;
+  background: rgba(0,0,0,0.5);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  position: relative;
+  top: 0;
+  right: 0;
   }
   .nav-links {
     display: none;
     flex-direction: column;
-    background: #009688;
-    position: absolute;
+    background: rgba(0,0,0,0.6);
+    position: fixed;
     top: 60px;
     right: 0;
     width: 200px;
+    z-index: 101;
+    border-radius: 0 0 0 10px;
   }
+  .home-nav {
+    padding: 10px 5%;
+  }
+}
+/* Show nav-links when active on mobile */
+.nav-links.active {
+  display: flex !important;
+}
+/* Make nav links more visible on hero */
+.home-nav .nav-links li a {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+/* Transparent nav background on home */
+.home-nav.transparent {
+  background: transparent !important;
 }
 @media (max-width: 1000px) {
   .dest-grid {

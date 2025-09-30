@@ -9,8 +9,8 @@
 </head>
 <body>
   <header>
-    <nav class="home-nav">
-      <div class="logo">🌍 Travel Guide</div>
+  <nav class="navbar home-nav">
+      <div class="logo">Travel Guide</div>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="destinations.html">Destinations</a></li>
@@ -18,16 +18,18 @@
         <li><a href="reviews.html">Reviews</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <button id="themeToggle" class="theme-btn">🌙</button>
+      <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">
+        <span class="toggle-slider"></span>
+      </button>
       <div class="menu-toggle" id="menuToggle">☰</div>
     </nav>
   </header>
 
   <section class="sec-container hero">
-    <img src="assets/img/mantenga4.jpg" alt="Beautiful Destination" class="hero-img">
     <div class="hero-text slide-in-left">
       <h1>Discover Your Next Adventure</h1>
       <p>Explore destinations, tips, and reviews from travelers worldwide.</p>
+      <br/>
       <a href="destinations.html" class="btn">Explore Destinations</a>
     </div>
   </section>
@@ -36,5 +38,19 @@
     <p>© 2025 Travel Guide</p>
   </footer>
   <script src="assets/js/script.js"></script>
+  <script>
+    // Add transparent class to home nav on load
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('.home-nav').classList.add('transparent');
+      // Mobile nav toggle
+      var menuToggle = document.getElementById('menuToggle');
+      var navLinks = document.getElementById('navLinks');
+      if(menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+        });
+      }
+    });
+  </script>
 </body>
 </html>

@@ -91,9 +91,13 @@ if (mapEl) {
   }).addTo(map);
 
   const destinations = [
-    { name: "Paris", coords: [48.8566, 2.3522], desc: "City of lights and romance." },
-    { name: "Tokyo", coords: [35.6895, 139.6917], desc: "Tradition meets modern." },
-    { name: "Cape Town", coords: [-33.9249, 18.4241], desc: "Nature and culture await." }
+  { name: "Sibebe Rock", coords: [-26.3906, 31.2097], desc: "Iconic granite mountain in Eswatini." },
+  { name: "Mantenga Cultural Village", coords: [-26.4972, 31.1833], desc: "Experience Eswatini culture and traditions." },
+  { name: "Mlilwane Wildlife Sanctuary", coords: [-26.4622, 31.1967], desc: "Peaceful nature reserve with wildlife and trails." },
+  { name: "Malolotja Nature Reserve", coords: [-26.1550, 31.1800], desc: "Scenic reserve with hiking and waterfalls." },
+  { name: "Mkhaya Game Reserve", coords: [-26.6500, 31.8000], desc: "Home to rhinos and other wildlife." },
+  { name: "Hlane Royal National Park", coords: [-26.2500, 31.7500], desc: "Largest park in Eswatini, lions and elephants." },
+  { name: "Ezulwini Valley", coords: [-26.4000, 31.1833], desc: "Tourism hub with hotels, crafts, and nature." }
   ];
 
   destinations.forEach(dest => {
